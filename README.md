@@ -1,3 +1,5 @@
+Reported as https://github.com/rust-lang/rust/issues/57517
+
 This repository is created to demonstrate negative performance impact of calling `step_by` on a `Iterator`
 (of a vector in this particular case). There're 4 benchmarks in this crate:
 1. Just iterating the vector without `step_by` called
