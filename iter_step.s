@@ -8,43 +8,35 @@
  mov     r15, rsi
  test    rdx, rdx
  je      LBB2_1
- mov     r8, rdx
  mov     rax, rdi
- mov     rbx, qword, ptr, [r15]
- mov     rcx, qword, ptr, [r15, +, 16]
- lea     rsi, [rbx, +, 4*rcx]
- lea     rdi, [rdx, -, 1]
- xor     ecx, ecx
- test    cl, 1
- jne     LBB2_7
- jmp     LBB2_5
-LBB2_10:
- mov     ecx, dword, ptr, [rbx]
- lea     ecx, [rcx, +, 2*rcx]
- mov     dword, ptr, [rbx], ecx
- mov     cl, 1
- mov     rbx, rdx
- test    cl, 1
+ mov     rcx, qword, ptr, [r15]
+ mov     rsi, qword, ptr, [r15, +, 16]
+ lea     rsi, [rcx, +, 4*rsi]
+ lea     r8, [rdx, -, 1]
+ xor     edi, edi
+LBB2_4:
+ test    dil, 1
  je      LBB2_5
-LBB2_7:
- mov     rcx, rsi
- sub     rcx, rbx
- shr     rcx, 2
- cmp     rcx, rdi
- jbe     LBB2_12
- lea     rdx, [rbx, +, 4*r8]
- lea     rbx, [rbx, +, 4*rdi]
+ mov     rdi, rsi
+ sub     rdi, rcx
+ shr     rdi, 2
+ cmp     rdi, r8
+ jbe     LBB2_10
+ lea     rbx, [rcx, +, 4*r8]
+ lea     rcx, [rcx, +, 4*rdx]
+ mov     dil, 1
  test    rbx, rbx
- jne     LBB2_10
- jmp     LBB2_12
+ jne     LBB2_4
+ jmp     LBB2_10
 LBB2_5:
- cmp     rsi, rbx
- je      LBB2_12
- mov     rdx, rbx
- add     rdx, 4
+ cmp     rsi, rcx
+ je      LBB2_10
+ mov     rbx, rcx
+ add     rcx, 4
+ mov     dil, 1
  test    rbx, rbx
- jne     LBB2_10
-LBB2_12:
+ jne     LBB2_4
+LBB2_10:
  mov     rcx, qword, ptr, [r15, +, 16]
  mov     qword, ptr, [rax, +, 16], rcx
  mov     rcx, qword, ptr, [r15]
