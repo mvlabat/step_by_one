@@ -6,14 +6,14 @@ const LARGE_ENOUGH: usize = 10_000_000;
 
 pub fn iter_default_step(mut arr: Vec<i32>) -> Vec<i32> {
     for e in arr.iter_mut() {
-        e.wrapping_add(3);
+        *e = e.wrapping_add(3);
     }
     arr
 }
 
 pub fn iter_step(mut arr: Vec<i32>, iter_step: usize) -> Vec<i32> {
     for e in arr.iter_mut().step_by(iter_step) {
-        e.wrapping_add(3);
+        *e = e.wrapping_add(3);
     }
     arr
 }
